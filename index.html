@@ -15,21 +15,16 @@
 <body>
 
 <!-- ============ En-tête ============ -->
-<header>
+<header class="masthead">
   <div class="topbar">
     <div class="side">
-      <a href="#collection">Rechercher</a>
+      <a href="#collection">Collection</a>
       <a href="#atelier">L’atelier</a>
     </div>
 
-    <a class="logo" href="#top" aria-label="HorseCo — accueil">
-      <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true">
-        <path d="M46 6h28v14c22 8 36 26 36 48v16H10V68c0-22 14-40 36-48z"/>
-        <path d="M52 28C34 36 24 51 24 68v6h72v-6c0-17-10-32-28-40z"/>
-        <path d="M10 74h100"/>
-      </svg>
-      <span class="word">HorseCo</span>
-      <span class="sub">Paris</span>
+    <a class="logo" href="#top">
+      <img src="assets/img/logo-horseco.png" width="511" height="378"
+           alt="HorseCo — Sellerie d’exception">
     </a>
 
     <div class="side side--end">
@@ -46,6 +41,8 @@
     <a href="#engagement">Engagement</a>
     <a href="questionnaire.html">Questionnaire</a>
   </nav>
+
+  <p class="signature">Du circuit à l’élégance</p>
 </header>
 
 <main id="top">
@@ -65,7 +62,8 @@
     <div class="hero-caption">
       <h1>Deux cuirs, une seule exigence</h1>
       <p>
-        Le cuir des sièges d’une berline part à la benne avec la voiture.
+        Le cuir d’un habitacle de sportive — pleine fleur, piqûre sellier,
+        vingt ans de tenue — part à la benne avec la voiture.
         Nous allons le chercher, et nous le remontons en sellerie.
       </p>
       <a class="underlink" href="#matiere">Découvrez</a>
@@ -225,15 +223,17 @@
       </figure>
       <div class="editorial-text">
         <p class="caps">Le sauvé · Zones d’habillage</p>
-        <h2>Sellerie <em>automobile</em> récupérée</h2>
+        <h2>Cuir <em>d’habitacle</em></h2>
         <p>
-          Cuir de sièges déposé sur des véhicules hors d’usage. Près d’un million et demi
-          de VHU sont traités chaque année en France : la matière ne manque pas, c’est le
-          geste de la récupérer qui manque.
+          Sièges, contre-portes et accoudoirs déposés sur des véhicules hors d’usage,
+          en priorité sur les berlines de prestige et les sportives : pleine fleur,
+          piqûre sellier apparente, teintes fauves.
         </p>
         <p>
-          Un cuir sélectionné, tanné et testé en usine pour résister vingt ans à la
-          friction et au soleil. <strong>Il finissait broyé.</strong>
+          Un cuir choisi, tanné et testé en usine pour tenir vingt ans à la friction
+          et au soleil. <strong>Il finissait broyé.</strong> Près d’un million et demi
+          de VHU sont traités chaque année en France : la matière ne manque pas,
+          c’est le geste de la récupérer qui manque.
         </p>
         <dl class="specs">
           <div><dt>Épaisseur</dt><dd>1,1 – 1,6 mm</dd></div>
@@ -290,7 +290,7 @@
   </section>
 
   <!-- ============ L'atelier ============ -->
-  <section class="band band--sand" id="atelier">
+  <section class="band band--leather" id="atelier">
     <div class="wrap">
       <div class="band-head">
         <p class="caps">L’atelier</p>
@@ -385,8 +385,15 @@
 </main>
 
 <!-- ============ Pied de page ============ -->
-<footer class="wrap foot" id="contact">
+<footer class="foot" id="contact">
+ <div class="wrap">
   <div class="foot-cols">
+    <div>
+      <a class="logo" href="#top">
+        <img src="assets/img/logo-horseco.png" width="511" height="378"
+             alt="HorseCo — Sellerie d’exception">
+      </a>
+    </div>
     <div>
       <h4>La maison</h4>
       <ul>
@@ -423,9 +430,10 @@
     </div>
   </div>
   <div class="foot-note">
-    <span>© 2026 HorseCo — Projet étudiant, marque fictive</span>
+    <span>© 2026 HorseCo — Sellerie d’exception · Projet étudiant, marque fictive</span>
     <span>Chiffres issus du dossier projet</span>
   </div>
+ </div>
 </footer>
 
 <script src="assets/js/site.js"></script>

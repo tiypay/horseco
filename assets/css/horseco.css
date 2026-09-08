@@ -7,13 +7,22 @@
 
 /* ---------- 1. Jetons ---------- */
 :root {
-  --paper:   #FFFFFF;   /* fond principal */
-  --sand:    #F4F1EC;   /* bandeaux, respiration */
-  --tile:    #E9E5DE;   /* réserve d'image */
-  --line:    #DDD8D0;   /* filets */
-  --ink:     #1B1917;   /* texte */
-  --ink-2:   #6A635B;   /* texte secondaire */
-  --accent:  #D4601C;   /* orange sellier */
+  /* Relevés sur le moodboard : pastilles cognac / or vieilli / noir,
+     et sur le cuir du panneau du logo. */
+  --paper:   #FAF6F0;   /* parchemin */
+  --sand:    #F0E7DA;   /* bandeaux, respiration */
+  --tile:    #E4D8C7;   /* réserve d'image */
+  --line:    #DCCEBB;   /* filets */
+  --ink:     #2A1A10;   /* texte */
+  --ink-2:   #6E5641;   /* texte secondaire */
+  --accent:  #904913;   /* cognac */
+  --gold:    #7A4900;   /* or vieilli */
+
+  --leather:      #421906;  /* cuir du panneau logo */
+  --leather-2:    #2A1108;  /* cuir dans l'ombre */
+  --leather-line: #6B3418;  /* filet sur cuir */
+  --cream:        #EFE2D0;  /* texte sur cuir */
+  --cream-dim:    #B99B79;
 
   --display: "EB Garamond", Garamond, "Times New Roman", serif;
   --sans: "Archivo", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -135,41 +144,34 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
 .media[data-missing="true"] .media-fallback { display: grid; }
 
 /* ---------- 5. En-tête ---------- */
+/* L'en-tête est un panneau de cuir, comme le logo lui-même. */
+.masthead {
+  background: linear-gradient(178deg, var(--leather) 0%, var(--leather-2) 100%);
+  color: var(--cream);
+}
+
 .topbar {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 1rem;
-  padding: 1.15rem var(--gutter) 0.95rem;
-  background: var(--paper);
+  padding: 1.25rem var(--gutter) 1rem;
 }
-.topbar .side { display: flex; align-items: center; gap: 1.4rem; color: var(--ink-2); }
+.topbar .side { display: flex; align-items: center; gap: 1.4rem; color: var(--cream-dim); }
 .topbar .side--end { justify-content: flex-end; }
-.topbar .side a { font-size: var(--t-xs); letter-spacing: 0.1em; }
-.topbar .side a:hover { color: var(--ink); }
+.topbar .side a { font-size: var(--t-xs); letter-spacing: 0.14em; text-transform: uppercase; }
+.topbar .side a:hover { color: var(--cream); }
 
-.logo {
-  display: grid;
-  justify-items: center;
-  gap: 0.3rem;
-  padding-inline: 1rem;
-}
-.logo svg { height: 26px; width: auto; }
-.logo .word {
-  font-family: var(--sans);
-  font-size: 1.06rem;
-  font-weight: 600;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  padding-left: 0.3em;
-  line-height: 1;
-}
-.logo .sub {
-  font-size: var(--t-nano);
-  letter-spacing: 0.42em;
-  text-transform: uppercase;
-  color: var(--ink-2);
-  padding-left: 0.42em;
+/* Le logo est livré embossé sur son cuir : on l'assume comme une pièce
+   apposée, à la manière des patchs sur les brosses du moodboard. */
+.logo { display: block; padding-inline: 1rem; }
+.logo img {
+  height: clamp(58px, 7vw, 86px);
+  width: auto;
+  border-radius: 2px;
+  box-shadow:
+    0 0 0 1px rgba(122, 73, 0, 0.55),
+    0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
 .mainnav {
@@ -177,27 +179,52 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
   justify-content: center;
   flex-wrap: wrap;
   gap: clamp(0.9rem, 2.4vw, 2.6rem);
-  padding: 0.9rem var(--gutter) 1.05rem;
-  border-bottom: 1px solid var(--line);
-  background: var(--paper);
+  padding: 0.35rem var(--gutter) 1.15rem;
 }
 .mainnav a {
   font-size: var(--t-xs);
   font-weight: 500;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ink);
-  padding-bottom: 2px;
+  color: var(--cream);
+  padding-bottom: 3px;
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease;
 }
-.mainnav a:hover { border-bottom-color: var(--ink); }
+.mainnav a:hover { border-bottom-color: var(--gold); }
+
+/* La signature du logo, reprise en filet sous la navigation */
+.signature {
+  border-top: 1px solid var(--leather-line);
+  padding: 0.7rem var(--gutter);
+  text-align: center;
+  font-size: var(--t-nano);
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--cream-dim);
+  background: var(--leather-2);
+}
 
 @media (max-width: 700px) {
   .topbar { grid-template-columns: 1fr; justify-items: center; }
   .topbar .side { display: none; }
-  .mainnav { gap: 0.75rem 1.1rem; font-size: var(--t-nano); }
+  .mainnav { gap: 0.75rem 1.1rem; }
+  .signature { letter-spacing: 0.24em; }
 }
+
+/* Bande de cuir pleine largeur */
+.band--leather {
+  background: linear-gradient(170deg, var(--leather) 0%, var(--leather-2) 100%);
+  color: var(--cream);
+}
+.band--leather h2, .band--leather h3, .band--leather .figure .v { color: var(--cream); }
+.band--leather p, .band--leather .step p { color: var(--cream-dim); }
+.band--leather .band-head .caps { color: var(--gold); }
+.band--leather .step { border-top-color: var(--leather-line); }
+.band--leather .step:last-child { border-bottom-color: var(--leather-line); }
+.band--leather .step .num { color: var(--gold); }
+.band--leather .btn { border-color: var(--cream); color: var(--cream); }
+.band--leather .btn:hover { background: var(--cream); color: var(--leather); }
 
 /* ---------- 6. Hero plein cadre ---------- */
 .hero { position: relative; background: var(--tile); }
@@ -413,7 +440,17 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
 .callout-body p { font-size: var(--t-base); }
 
 /* ---------- 14. Pied de page ---------- */
-.foot { border-top: 1px solid var(--line); padding-block: clamp(2.5rem, 5vw, 4rem) 1.75rem; }
+.foot {
+  background: var(--leather-2);
+  color: var(--cream);
+  padding-block: clamp(2.5rem, 5vw, 4rem) 1.75rem;
+}
+.foot .logo { padding-inline: 0; margin-bottom: 1.2rem; }
+.foot .logo img { height: 64px; }
+.foot ul { color: var(--cream-dim); }
+.foot ul a:hover { color: var(--cream); }
+.foot h4 { color: var(--gold); }
+.foot-note { border-top-color: var(--leather-line); color: var(--cream-dim); }
 .foot-cols {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
@@ -454,8 +491,8 @@ body.survey { background: var(--sand); }
   top: 0;
   z-index: 20;
 }
-.q-top .logo { justify-items: start; padding-inline: 0; }
-.q-top .logo .word { font-size: 0.9rem; }
+.q-top .logo { padding-inline: 0; }
+.q-top .logo img { height: 44px; box-shadow: 0 0 0 1px rgba(122, 73, 0, 0.4); }
 
 .lang { display: inline-flex; border: 1px solid var(--ink); }
 .lang button {
