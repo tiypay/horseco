@@ -1,9 +1,9 @@
 # HorseCo
 
-Sellerie upcyclée. Cuir artisanal de Toscane sur les zones de sécurité,
+Sellerie recyclée. Cuir artisanal de Toscane sur les zones de sécurité,
 cuir de sellerie automobile récupéré en centre VHU pour l'habillage.
 
-Projet étudiant — Séminaire BTS 1, *Recycling & Upcycling*, septembre 2026.
+Projet étudiant — Séminaire BTS 1, thème *Recycling*, septembre 2026.
 Marque fictive.
 
 ---

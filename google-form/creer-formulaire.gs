@@ -1,7 +1,7 @@
 /**
  * ============================================================
  *  HORSECO — Générateur du questionnaire Google Forms
- *  Séminaire BTS 1 · Recycling & Upcycling · Septembre 2026
+ *  Séminaire BTS 1 · Recycling · Septembre 2026
  *  10 questions + collecte d'e-mail · bilingue FR / EN
  * ============================================================
  *
@@ -147,7 +147,7 @@ function creerFormulaireHorseCo() {
   ], true);
 
   /* ---------- 8 ---------- */
-  qcm(form, '8. Seriez-vous prêt·e à payer plus cher pour un produit upcyclé fabriqué en France ? / Would you pay more for an upcycled product made in France?', [
+  qcm(form, '8. Seriez-vous prêt·e à payer plus cher pour un produit recyclé fabriqué en France ? / Would you pay more for a recycled product made in France?', [
     'Oui, jusqu\'à 20 % de plus — Yes, up to 20% more',
     'Oui, jusqu\'à 10 % de plus — Yes, up to 10% more',
     'Seulement au même prix — Only at the same price',

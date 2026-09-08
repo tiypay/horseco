@@ -151,8 +151,8 @@
     },
     {
       id: "q8", type: "single",
-      fr: "Seriez-vous prêt·e à payer plus cher pour un produit upcyclé fabriqué en France ?",
-      en: "Would you pay more for an upcycled product made in France?",
+      fr: "Seriez-vous prêt·e à payer plus cher pour un produit recyclé fabriqué en France ?",
+      en: "Would you pay more for a recycled product made in France?",
       of: ["Oui, jusqu'à 20 % de plus", "Oui, jusqu'à 10 % de plus", "Seulement au même prix", "Non, je le veux moins cher"],
       oe: ["Yes, up to 20% more", "Yes, up to 10% more", "Only at the same price", "No, I want it cheaper"]
     },
