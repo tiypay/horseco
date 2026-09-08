@@ -149,11 +149,26 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
 .media[data-missing="true"] .media-fallback { display: grid; }
 
 /* ---------- 5. En-tête ---------- */
-/* L'en-tête est un panneau de cuir, comme le logo lui-même. */
+/* L'en-tête passe par-dessus le film : un voile de cuir semi-opaque,
+   assez dense pour que le texte reste lisible, assez fin pour qu'on
+   devine le mouvement de la vidéo derrière. */
 .masthead {
-  background: linear-gradient(178deg, var(--leather) 0%, var(--leather-2) 100%);
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  z-index: 5;
   color: var(--cream);
+  background: linear-gradient(
+    180deg,
+    rgba(42, 17, 8, 0.90) 0%,
+    rgba(42, 17, 8, 0.78) 55%,
+    rgba(42, 17, 8, 0.58) 100%);
+  backdrop-filter: blur(3px) saturate(115%);
+  -webkit-backdrop-filter: blur(3px) saturate(115%);
 }
+
+/* Les pages sans film gardent un en-tête plein, dans le flux. */
+body.survey .masthead { position: static; background: var(--leather-2); backdrop-filter: none; }
 
 .topbar {
   display: grid;
@@ -207,7 +222,8 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
   letter-spacing: 0.36em;
   text-transform: uppercase;
   color: var(--cream-dim);
-  background: var(--leather-2);
+  background: rgba(22, 13, 6, 0.55);
+  border-top-color: rgba(107, 52, 24, 0.55);
 }
 
 @media (max-width: 700px) {
@@ -358,45 +374,22 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
 .specs dd { margin: 0; }
 @media (max-width: 520px) { .specs > div { grid-template-columns: minmax(0, 1fr); gap: 0.15rem; } }
 
-/* ---------- 9 bis. L'épure : la matière situee sur la piece ---------- */
-.epure-photo {
-  margin: 0 auto;
-  max-width: 46rem;
+/* ---------- 9 bis. L'épure : la pièce à gauche, la légende à droite ---------- */
+.epure {
   display: grid;
-  gap: 1.1rem;
-  justify-items: center;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+  gap: clamp(1.75rem, 4vw, 3.5rem);
+  align-items: center;
 }
-.epure-photo .plan { position: relative; width: 100%; border: 1px solid var(--line); }
+@media (max-width: 860px) { .epure { grid-template-columns: minmax(0, 1fr); } }
+
+.epure-photo { margin: 0; display: grid; gap: 1rem; }
+.epure-photo .plan { position: relative; border: 1px solid var(--line); }
 .epure-photo img { width: 100%; height: auto; }
+.epure-photo figcaption { font-size: var(--t-sm); color: var(--ink-2); }
+.epure-photo figcaption em { font-style: italic; }
 
-/* Zones : au repos rien ne bouge. Quand une matière est choisie, le
-   reste de la selle s'assombrit et la zone reste éclairée, cernée. */
-.zones { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
-
-.zones .voile { opacity: 0; transition: opacity 0.4s ease; }
-.plan:not([data-zone=""]) .zones .voile { opacity: 0.6; }
-
-/* Le trou du voile : blanc = couvert, noir = laissé en lumière */
-.zones .trou { fill: transparent; transition: fill 0.4s ease; }
-.plan[data-zone="1"] .zones .trou[data-z="1"],
-.plan[data-zone="2"] .zones .trou[data-z="2"],
-.plan[data-zone="3"] .zones .trou[data-z="3"],
-.plan[data-zone="4"] .zones .trou[data-z="4"] { fill: #000; }
-
-.zones .teinte {
-  fill: var(--c);
-  fill-opacity: 0;
-  stroke: var(--c);
-  stroke-width: 3;
-  stroke-opacity: 0;
-  transition: fill-opacity 0.4s ease, stroke-opacity 0.4s ease;
-}
-.plan[data-zone="1"] .zones .teinte[data-z="1"],
-.plan[data-zone="2"] .zones .teinte[data-z="2"],
-.plan[data-zone="3"] .zones .teinte[data-z="3"],
-.plan[data-zone="4"] .zones .teinte[data-z="4"] { fill-opacity: 0.26; stroke-opacity: 1; }
-
-/* Repere chiffre, colore par le cuir qu'il designe */
+/* Repère chiffré, coloré par le cuir qu'il désigne */
 .repere {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -412,72 +405,41 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   box-shadow: 0 0 0 2px rgba(250, 246, 240, 0.9), 0 3px 10px rgba(0, 0, 0, 0.35);
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-.plan:not([data-zone=""]) .repere { opacity: 0.3; }
-.plan[data-zone="1"] .repere[data-z="1"],
-.plan[data-zone="2"] .repere[data-z="2"],
-.plan[data-zone="3"] .repere[data-z="3"],
-.plan[data-zone="4"] .repere[data-z="4"] {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1.18);
 }
 
-.epure-photo figcaption {
-  max-width: 34rem;
-  text-align: center;
-  font-size: var(--t-sm);
-  color: var(--ink-2);
-}
-.epure-photo figcaption em { font-style: italic; }
-.epure-photo .astuce { color: var(--accent); }
-
-/* Legende : chaque entree commande sa zone */
-.epure-notes {
-  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+.epure-legende { list-style: none; margin: 0; padding: 0; display: grid; }
+.epure-legende li {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
-  gap: clamp(0.75rem, 2vw, 1.25rem);
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.9rem;
+  padding-block: clamp(0.9rem, 2vw, 1.25rem);
   border-top: 1px solid var(--line);
-  padding-top: clamp(1.5rem, 3vw, 2.25rem);
 }
-.note {
-  display: grid;
-  gap: 0.4rem;
-  align-content: start;
-  text-align: left;
-  font-family: var(--sans);
-  background: transparent;
-  border: 1px solid transparent;
-  border-radius: 2px;
-  padding: 0.9rem;
-  cursor: pointer;
-  transition: background 0.3s ease, border-color 0.3s ease;
-}
-.note:hover, .note:focus-visible { background: var(--sand); border-color: var(--line); }
-.note[aria-pressed="true"] { background: var(--sand); border-color: var(--c); }
-
-.note .num {
-  width: 1.5rem;
-  height: 1.5rem;
+.epure-legende li:last-child { border-bottom: 1px solid var(--line); }
+.epure-legende .num {
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-top: 0.1rem;
   display: grid;
   place-items: center;
   border-radius: 50%;
   background: var(--c);
   color: var(--t);
-  font-size: 0.72rem;
+  font-size: 0.74rem;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
-.note .titre {
+.epure-legende h3 {
+  font-family: var(--sans);
   font-size: var(--t-xs);
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--ink);
+  margin-bottom: 0.3rem;
 }
-.note strong { font-size: var(--t-sm); font-weight: 500; color: var(--ink); }
-.note .dit { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.5; }
+.epure-legende .cuir { font-size: var(--t-sm); color: var(--ink); margin-bottom: 0.25rem; }
+.epure-legende p { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.5; }
 
 /* ---------- 10. Citation pleine largeur ---------- */
 .pull {
@@ -577,6 +539,18 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
 .foot ul a:hover { color: var(--cream); }
 .foot h4 { color: var(--gold); }
 .foot-note { border-top-color: var(--leather-line); color: var(--cream-dim); }
+
+/* Réseaux : le pictogramme d'abord, le compte ensuite */
+.foot .reseaux { gap: 0.85rem; }
+.foot .reseaux a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: var(--cream-dim);
+  transition: color 0.3s ease;
+}
+.foot .reseaux a:hover { color: var(--gold); }
+.foot .reseaux svg { width: 20px; height: 20px; flex: none; }
 .foot-cols {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr));
