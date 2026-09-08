@@ -126,11 +126,16 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
   overflow: hidden;
   background: var(--tile);
 }
-.media img {
+.media img,
+.media video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+
+/* Le film est tourné à la verticale : dans une bande large, on cadre
+   un peu au-dessus du centre, là où se tiennent les mains et le cavalier. */
+.media--film video { object-position: center 42%; background: var(--leather-2); }
 .media-fallback {
   position: absolute;
   inset: 0;

@@ -17,6 +17,32 @@
     if (img.complete && img.naturalWidth === 0) markMissing(img);
   });
 
+  /* Film du hero : muet et en boucle.
+     Certains navigateurs exigent un appel explicite à play() malgré
+     l'attribut autoplay ; s'ils refusent, l'affiche reste affichée.
+     Si la personne a demandé moins d'animations, on ne lance rien. */
+  var film = document.querySelector('.media--film video');
+  if (film) {
+    film.muted = true;             // condition de la lecture automatique
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      film.removeAttribute('autoplay');
+      film.pause();
+    } else {
+      var lancer = function () {
+        var essai = film.play();
+        if (essai && essai.catch) essai.catch(function () { /* affiche conservée */ });
+      };
+      lancer();
+      // Le premier appel peut arriver avant que la vidéo soit prête, ou
+      // pendant que l'onglet est en arrière-plan : on retente aux moments utiles.
+      film.addEventListener("canplay", lancer, { once: true });
+      document.addEventListener("visibilitychange", function () {
+        if (document.visibilityState === "visible" && film.paused) lancer();
+      });
+      window.addEventListener("pointerdown", lancer, { once: true });
+    }
+  }
+
   /* Saut d'ancre : compense la hauteur de l'en-tête. */
   var header = document.querySelector("header");
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {

@@ -49,15 +49,14 @@
 
   <!-- ============ Hero ============ -->
   <section class="hero">
-    <figure class="media">
-      <img src="assets/img/hero.jpg" alt="Cavalier au galop, sellerie HorseCo">
-      <div class="media-fallback" aria-hidden="true">
-        <svg viewBox="0 0 120 100" fill="none" stroke="#1B1917" stroke-width="1.4" stroke-linejoin="round">
-          <path d="M46 6h28v14c22 8 36 26 36 48v16H10V68c0-22 14-40 36-48z"/>
-          <path d="M52 28C34 36 24 51 24 68v6h72v-6c0-17-10-32-28-40z"/>
-          <path d="M10 74h100"/>
-        </svg>
-      </div>
+    <figure class="media media--film">
+      <!-- Film de présentation, muet et en boucle. La photo sert d'affiche
+           le temps du chargement, et de repli si la lecture est refusée. -->
+      <video class="film" poster="assets/img/hero.jpg"
+             autoplay muted loop playsinline preload="auto"
+             aria-label="Film de présentation HorseCo, sans son : de l’habitacle de sportive à la sellerie">
+        <source src="assets/video/hero.mp4" type="video/mp4">
+      </video>
     </figure>
     <div class="hero-caption">
       <h1>Deux cuirs, une seule exigence</h1>

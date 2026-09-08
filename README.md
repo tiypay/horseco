@@ -16,14 +16,37 @@ Marque fictive.
 | `questionnaire.html` | Coquille de marque autour du Google Form |
 | `questionnaire-hors-ligne.html` | Secours sans réseau, export CSV |
 | `google-form/creer-formulaire.gs` | Génère le Google Form (10 questions, FR/EN) |
-| `assets/` | CSS, JS, logo |
+| `assets/` | CSS, JS, logo, photos, film |
 
 Site statique : aucun serveur, aucune dépendance à installer.
 Double-cliquer sur `index.html` suffit pour le voir.
 
 ---
 
-## 1. Les photos
+## 1. Le film du hero
+
+`assets/video/hero.mp4` — le film de présentation, **muet et en boucle**,
+à la place de la photo d'accueil.
+
+Préparé depuis le master `202609081235.mp4` (conservé à la racine du
+dossier parent, avec son son) :
+
+- piste audio **supprimée**, pas seulement coupée
+- filigrane « CapCut AI » **recadré** (132 px rognés en haut)
+- 60 → 30 images/s, H.264 CRF 27, `faststart`
+- **74,3 Mo → 7,7 Mo**
+
+Le film est tourné à la verticale (1080×1760) : dans une bande large il
+est cadré à 42 % de la hauteur, là où se tiennent les mains et le
+cavalier. `assets/img/hero.jpg` sert d'affiche pendant le chargement et
+de repli si la lecture est refusée.
+
+Pour remplacer le film : réencoder avec les mêmes réglages, ou déposer
+un `hero.mp4` déjà léger au même endroit.
+
+---
+
+## 2. Les photos
 
 Les huit visuels sont **déjà en place** dans `assets/img/` — générés avec
 Gemini, puis redimensionnés et compressés (16,8 Mo → 1,0 Mo au total).
@@ -43,12 +66,12 @@ affiche une épure au trait à sa place plutôt que de casser.
 | `matiere-vhu.jpg` | Siège de voiture en cuir, ou casse auto | paysage 4:3 |
 | `atelier.jpg` | Établi, outils de sellier, mains au travail | paysage large |
 
-Tant qu'une photo est absente, le site affiche une épure au trait à sa
-place — rien ne casse, mais l'effet « maison de luxe » vient des images.
+`hero.jpg` ne s'affiche plus en fond d'accueil : il sert d'affiche au
+film (voir section 1).
 
-Sources gratuites et libres d'usage : [Pexels](https://www.pexels.com/fr-fr/),
-[Unsplash](https://unsplash.com/fr). Chercher *horse riding, saddle,
-leather, tannery, car interior leather, scrapyard*.
+Attention si vous régénérez des images : **vider le dossier
+Téléchargements des anciens `Gemini_Generated_Image_*.jpg` avant**, sinon
+on récupère un fichier d'un autre projet sans s'en apercevoir.
 
 ---
 
@@ -70,7 +93,7 @@ pour créer le tableau de dépouillement.
 
 ---
 
-## 2. Recréer le Google Form (si besoin)
+## 3. Recréer le Google Form (si besoin)
 
 1. Ouvrir <https://script.google.com/home/start> → **Nouveau projet**
 2. Tout sélectionner dans l'éditeur (`Ctrl+A`) et coller
@@ -100,7 +123,7 @@ alors le formulaire dans l'habillage HorseCo.
 
 ---
 
-## 3. Enquête de rue — mercredi 11 h – 13 h
+## 4. Enquête de rue — mercredi 11 h – 13 h
 
 Cible : **50 personnes** (exigence du guide).
 
@@ -115,7 +138,7 @@ Cible : **50 personnes** (exigence du guide).
 
 ---
 
-## 4. Mettre en ligne
+## 5. Mettre en ligne
 
 ### Sur raw-x.fr
 
@@ -137,10 +160,15 @@ Le site sort sur `https://<compte>.github.io/horseco/`.
 
 ## Repères de marque
 
-- **Palette** — papier `#FFFFFF`, sable `#F4F1EC`, encre `#1B1917`,
-  orange sellier `#D4601C`
+- **Baseline** — Sellerie d'exception
+- **Signature** — Du circuit à l'élégance
+- **Palette**, relevée sur les pastilles du moodboard et sur le cuir du logo :
+  cognac `#904913`, or vieilli `#7A4900`, noir · cuir `#421906` et `#2A1108`,
+  crème `#EFE2D0` · parchemin `#FAF6F0`, sable `#F0E7DA`, encre `#2A1A10`
 - **Typographies** — EB Garamond (titres, italique) · Archivo (capitales espacées)
-- **Emblème** — l'étrier : le seul point où le cavalier, la selle et le sol se touchent
+- **Logo** — apposé comme un patch de cuir embossé, à la manière des
+  brosses de pansage du moodboard (`assets/img/logo-horseco.png`,
+  découpé depuis `assets/img/moodboard.png`)
 - **Nommage** — noms toscans : Maremma (les *butteri*, cavaliers de Toscane),
   Volterra, Fucecchio et Siena, du district du tannage
 
