@@ -130,8 +130,10 @@ Cible : **50 personnes** (exigence du guide).
 - Le QR code pointe vers le **lien Google Form direct**, pas vers le site :
   moins de clics, et ça marche même si le site est en panne.
   Générer le QR sur <https://www.qr-code-generator.com/> ou équivalent.
-- Chaque membre de l'équipe remplit le champ **Enquêteur (initiales)** :
-  ça permet de vérifier la couverture et de répartir les 50.
+- Le questionnaire enchaîne directement sur la première question : il n'y a
+  **aucun champ à remplir par l'enquêteur**, la personne interrogée ne voit
+  que ce qui la concerne. Pour répartir les 50, comptez de votre côté
+  (chacun sait combien il en a fait).
 - Si le réseau lâche : `questionnaire-hors-ligne.html`, les réponses
   restent dans le téléphone, puis **Exporter CSV** et coller dans le
   Google Sheets.

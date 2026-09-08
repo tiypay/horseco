@@ -54,16 +54,6 @@ function creerFormulaireHorseCo() {
       .setCollectEmail(false)
       .setAllowResponseEdits(false);
 
-  /* --------------------------------------------------------
-     Repère terrain : qui a fait passer le questionnaire.
-     Permet de répartir les 50 personnes entre les membres
-     de l'équipe et de vérifier la couverture.
-     -------------------------------------------------------- */
-  form.addTextItem()
-      .setTitle('Enquêteur — initiales / Interviewer — initials')
-      .setHelpText('Rempli par le membre de l\'équipe, pas par la personne interrogée.')
-      .setRequired(false);
-
   form.addPageBreakItem()
       .setTitle('Vous et le cheval / You and horses');
 
@@ -96,7 +86,7 @@ function creerFormulaireHorseCo() {
   ], true);
 
   /* ---------- 4 ---------- */
-  cases(form, '4. Quand vous achetez du matériel équestre, qu\'est-ce qui compte le plus ? / When buying riding gear, what matters most?', [
+  cases(form, '4. Si vous achetez du matériel équestre, qu\'est-ce qui compte le plus ? / If you buy riding gear, what matters most?', [
     'Sécurité et solidité — Safety and durability',
     'Confort du cheval — Comfort for the horse',
     'Prix — Price',
@@ -164,7 +154,7 @@ function creerFormulaireHorseCo() {
   ], true);
 
   /* ---------- 10 ---------- */
-  qcm(form, '10. Où achèteriez-vous ce type de produit ? / Where would you buy this kind of product?', [
+  qcm(form, '10. Où aimeriez-vous trouver ce type de produit ? / Where would you like to find this kind of product?', [
     'Sur le site de la marque — On the brand\'s website',
     'En sellerie spécialisée — In a specialist tack shop',
     'Sur un concours ou un salon équestre — At a horse show or trade fair',

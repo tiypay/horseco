@@ -17,7 +17,6 @@
 
   var KEY_DATA = "horseco.v1.responses";
   var KEY_LANG = "horseco.v1.lang";
-  var KEY_WHO  = "horseco.v1.enqueteur";
 
   /* ---------- Textes d'interface ---------- */
   var UI = {
@@ -25,8 +24,6 @@
       introEyebrow: "Étude de marché · Septembre 2026",
       introTitle: "Quatre-vingt-dix secondes pour nous dire si nous avons raison.",
       introLede: "HorseCo conçoit du matériel équestre haut de gamme à partir de cuir de sièges automobiles récupéré en casse, associé à du cuir artisanal de Toscane sur les points de sécurité. Dix questions, aucune donnée personnelle obligatoire.",
-      whoLabel: "Enquêteur (initiales, facultatif)",
-      whoPlaceholder: "ex. LM",
       start: "Commencer",
       metaQuestions: "Questions",
       metaTime: "Durée",
@@ -62,8 +59,6 @@
       introEyebrow: "Market research · September 2026",
       introTitle: "Ninety seconds to tell us whether we are right.",
       introLede: "HorseCo builds high-end riding equipment from car-seat leather reclaimed at scrapyards, paired with artisan Italian leather on every safety-critical part. Ten questions, no personal data required.",
-      whoLabel: "Interviewer (initials, optional)",
-      whoPlaceholder: "e.g. LM",
       start: "Start",
       metaQuestions: "Questions",
       metaTime: "Length",
@@ -122,8 +117,8 @@
     },
     {
       id: "q4", type: "multi",
-      fr: "Quand vous achetez du matériel équestre, qu'est-ce qui compte le plus ?",
-      en: "When buying riding gear, what matters most to you?",
+      fr: "Si vous achetez du matériel équestre, qu'est-ce qui compte le plus ?",
+      en: "If you buy riding gear, what matters most to you?",
       of: ["Sécurité et solidité", "Confort du cheval", "Prix", "Esthétique et design",
            "Notoriété de la marque", "Origine des matériaux", "Impact environnemental"],
       oe: ["Safety and durability", "Comfort for the horse", "Price", "Look and design",
@@ -164,7 +159,7 @@
     },
     {
       id: "q10", type: "single",
-      fr: "Où achèteriez-vous ce type de produit ?", en: "Where would you buy this kind of product?",
+      fr: "Où aimeriez-vous trouver ce type de produit ?", en: "Where would you like to find this kind of product?",
       of: ["Sur le site de la marque", "En sellerie spécialisée", "Sur un concours ou un salon équestre",
            "Dans un pop-up store", "Sur une marketplace en ligne"],
       oe: ["On the brand's website", "In a specialist tack shop", "At a horse show or trade fair",
@@ -205,7 +200,6 @@
   var view = "intro";        // intro | quiz | done | results
   var step = 0;
   var answers = {};
-  var who = load(KEY_WHO) || "";
 
   var stage = document.getElementById("stage");
   var bar = document.getElementById("bar");
@@ -266,25 +260,6 @@
         meta.appendChild(d);
       });
     card.appendChild(meta);
-
-    var wrapWho = el("div");
-    var lab = el("label", "q-count", t().whoLabel);
-    lab.setAttribute("for", "who");
-    lab.style.display = "block";
-    lab.style.marginBottom = "0.6rem";
-    var input = el("input", "q-field");
-    input.id = "who";
-    input.type = "text";
-    input.maxLength = 6;
-    input.placeholder = t().whoPlaceholder;
-    input.value = who;
-    input.addEventListener("input", function () {
-      who = input.value.trim();
-      save(KEY_WHO, who);
-    });
-    wrapWho.appendChild(lab);
-    wrapWho.appendChild(input);
-    card.appendChild(wrapWho);
 
     var start = el("button", "btn", t().start);
     start.type = "button";
@@ -417,7 +392,7 @@
   }
 
   function submit() {
-    var rec = { ts: new Date().toISOString(), lang: lang, who: who };
+    var rec = { ts: new Date().toISOString(), lang: lang };
     Q.forEach(function (q) {
       var a = answers[q.id];
       if (a == null || a === "") { rec[q.id] = ""; return; }
@@ -527,8 +502,8 @@
     var all = responses();
     if (!all.length) { toast(t().nothing); return; }
 
-    var cols = ["ts", "lang", "who"].concat(Q.map(function (q) { return q.id; }));
-    var head = ["Horodatage", "Langue", "Enqueteur"].concat(Q.map(function (q) { return q.fr; }));
+    var cols = ["ts", "lang"].concat(Q.map(function (q) { return q.id; }));
+    var head = ["Horodatage", "Langue"].concat(Q.map(function (q) { return q.fr; }));
 
     function cell(v) {
       var s = v == null ? "" : String(v);
