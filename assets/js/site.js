@@ -43,6 +43,34 @@
     }
   }
 
+  /* L'épure : la légende commande la zone colorée sur la selle.
+     Survol pour prévisualiser, clic pour garder la zone affichée —
+     le clic est ce qui fait fonctionner l'ensemble au doigt. */
+  var plan = document.querySelector('.epure-photo .plan');
+  var notes = document.querySelectorAll('.epure-notes .note');
+  if (plan && notes.length) {
+    var fixee = "";
+
+    var afficher = function (z) {
+      plan.dataset.zone = z;
+      notes.forEach(function (b) {
+        b.setAttribute("aria-pressed", String(b.dataset.z === fixee));
+      });
+    };
+
+    notes.forEach(function (b) {
+      var z = b.dataset.z;
+      b.addEventListener("mouseenter", function () { if (!fixee) afficher(z); });
+      b.addEventListener("mouseleave", function () { if (!fixee) afficher(""); });
+      b.addEventListener("focus", function () { if (!fixee) afficher(z); });
+      b.addEventListener("blur", function () { if (!fixee) afficher(""); });
+      b.addEventListener("click", function () {
+        fixee = (fixee === z) ? "" : z;
+        afficher(fixee);
+      });
+    });
+  }
+
   /* Saut d'ancre : compense la hauteur de l'en-tête. */
   var header = document.querySelector("header");
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {

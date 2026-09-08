@@ -358,7 +358,7 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
 .specs dd { margin: 0; }
 @media (max-width: 520px) { .specs > div { grid-template-columns: minmax(0, 1fr); gap: 0.15rem; } }
 
-/* ---------- 9 bis. L'épure posée sur la pièce réelle ---------- */
+/* ---------- 9 bis. L'épure : la matière situee sur la piece ---------- */
 .epure-photo {
   margin: 0 auto;
   max-width: 46rem;
@@ -366,14 +366,37 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
   gap: 1.1rem;
   justify-items: center;
 }
-.epure-photo .plan {
-  position: relative;
-  width: 100%;
-  border: 1px solid var(--line);
-}
+.epure-photo .plan { position: relative; width: 100%; border: 1px solid var(--line); }
 .epure-photo img { width: 100%; height: auto; }
 
-/* Repère chiffré, coloré par le cuir qu'il désigne */
+/* Zones : au repos rien ne bouge. Quand une matière est choisie, le
+   reste de la selle s'assombrit et la zone reste éclairée, cernée. */
+.zones { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+
+.zones .voile { opacity: 0; transition: opacity 0.4s ease; }
+.plan:not([data-zone=""]) .zones .voile { opacity: 0.6; }
+
+/* Le trou du voile : blanc = couvert, noir = laissé en lumière */
+.zones .trou { fill: transparent; transition: fill 0.4s ease; }
+.plan[data-zone="1"] .zones .trou[data-z="1"],
+.plan[data-zone="2"] .zones .trou[data-z="2"],
+.plan[data-zone="3"] .zones .trou[data-z="3"],
+.plan[data-zone="4"] .zones .trou[data-z="4"] { fill: #000; }
+
+.zones .teinte {
+  fill: var(--c);
+  fill-opacity: 0;
+  stroke: var(--c);
+  stroke-width: 3;
+  stroke-opacity: 0;
+  transition: fill-opacity 0.4s ease, stroke-opacity 0.4s ease;
+}
+.plan[data-zone="1"] .zones .teinte[data-z="1"],
+.plan[data-zone="2"] .zones .teinte[data-z="2"],
+.plan[data-zone="3"] .zones .teinte[data-z="3"],
+.plan[data-zone="4"] .zones .teinte[data-z="4"] { fill-opacity: 0.26; stroke-opacity: 1; }
+
+/* Repere chiffre, colore par le cuir qu'il designe */
 .repere {
   position: absolute;
   transform: translate(-50%, -50%);
@@ -389,6 +412,15 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   box-shadow: 0 0 0 2px rgba(250, 246, 240, 0.9), 0 3px 10px rgba(0, 0, 0, 0.35);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.plan:not([data-zone=""]) .repere { opacity: 0.3; }
+.plan[data-zone="1"] .repere[data-z="1"],
+.plan[data-zone="2"] .repere[data-z="2"],
+.plan[data-zone="3"] .repere[data-z="3"],
+.plan[data-zone="4"] .repere[data-z="4"] {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1.18);
 }
 
 .epure-photo figcaption {
@@ -398,29 +430,36 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
   color: var(--ink-2);
 }
 .epure-photo figcaption em { font-style: italic; }
+.epure-photo .astuce { color: var(--accent); }
 
+/* Legende : chaque entree commande sa zone */
 .epure-notes {
   margin: clamp(2.5rem, 5vw, 4rem) 0 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  gap: clamp(0.75rem, 2vw, 1.25rem);
   border-top: 1px solid var(--line);
   padding-top: clamp(1.5rem, 3vw, 2.25rem);
 }
-.epure-notes dt {
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  font-size: var(--t-xs);
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 0.6rem;
+.note {
+  display: grid;
+  gap: 0.4rem;
+  align-content: start;
+  text-align: left;
+  font-family: var(--sans);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 0.9rem;
+  cursor: pointer;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
-.epure-notes .num {
+.note:hover, .note:focus-visible { background: var(--sand); border-color: var(--line); }
+.note[aria-pressed="true"] { background: var(--sand); border-color: var(--c); }
+
+.note .num {
   width: 1.5rem;
   height: 1.5rem;
-  flex: none;
   display: grid;
   place-items: center;
   border-radius: 50%;
@@ -428,16 +467,17 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
   color: var(--t);
   font-size: 0.72rem;
   font-weight: 600;
-  letter-spacing: 0;
   font-variant-numeric: tabular-nums;
 }
-.epure-notes dd { margin: 0; font-size: var(--t-sm); color: var(--ink-2); }
-.epure-notes dd strong {
-  display: block;
-  color: var(--ink);
+.note .titre {
+  font-size: var(--t-xs);
   font-weight: 500;
-  margin-bottom: 0.25rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink);
 }
+.note strong { font-size: var(--t-sm); font-weight: 500; color: var(--ink); }
+.note .dit { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.5; }
 
 /* ---------- 10. Citation pleine largeur ---------- */
 .pull {
