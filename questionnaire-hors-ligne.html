@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>HorseCo — Questionnaire hors ligne</title>
+<meta name="description" content="Version hors ligne du questionnaire HorseCo : 10 questions, FR / EN, export CSV. Roue de secours si le réseau tombe pendant l'enquête de rue.">
+<meta name="theme-color" content="#F4F1EC">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap">
+<link rel="stylesheet" href="assets/css/horseco.css">
+<link rel="icon" href="assets/img/logo-horseco.svg" type="image/svg+xml">
+</head>
+<body class="survey">
+
+<div class="q-shell">
+
+  <header class="q-top">
+    <a class="logo" href="index.html" aria-label="HorseCo — retour au site">
+      <svg viewBox="0 0 120 100" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true">
+        <path d="M46 6h28v14c22 8 36 26 36 48v16H10V68c0-22 14-40 36-48z"/>
+        <path d="M52 28C34 36 24 51 24 68v6h72v-6c0-17-10-32-28-40z"/>
+        <path d="M10 74h100"/>
+      </svg>
+      <span class="word">HorseCo</span>
+    </a>
+    <div class="lang" role="group" aria-label="Langue / Language">
+      <button type="button" data-lang="fr" aria-pressed="true">FR</button>
+      <button type="button" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+  </header>
+
+  <div class="q-progress" aria-hidden="true"><i id="bar"></i></div>
+
+  <main class="q-main" id="stage"></main>
+
+  <footer class="q-tools">
+    <span class="tally" id="tally">—</span>
+    <div class="group">
+      <button type="button" id="btn-results"></button>
+      <button type="button" id="btn-export"></button>
+      <button type="button" id="btn-reset"></button>
+    </div>
+  </footer>
+
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/survey.js"></script>
+</body>
+</html>

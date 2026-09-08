@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" width="120" height="100" role="img" aria-label="HorseCo">
+  <title>HorseCo</title>
+  <g fill="none" stroke="#C0A05A" stroke-width="6" stroke-linejoin="round">
+    <path d="M46 6h28v14c22 8 36 26 36 48v16H10V68c0-22 14-40 36-48z"/>
+    <path d="M52 28C34 36 24 51 24 68v6h72v-6c0-17-10-32-28-40z"/>
+    <path d="M10 74h100"/>
+  </g>
+</svg>
