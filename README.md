@@ -49,7 +49,25 @@ leather, tannery, car interior leather, scrapyard*.
 
 ---
 
-## 2. Créer le Google Form
+## Le questionnaire est en ligne
+
+**Lien à diffuser** (QR code, enquête de rue) :
+<https://docs.google.com/forms/d/e/1FAIpQLSd_B-GZ0P3lBtfHZcepFdf5fCavXH1gQkCQISdLK-naSxXJCA/viewform>
+
+**Lien d'édition** (questions, réponses) :
+<https://docs.google.com/forms/d/1cF4zurCwsKZcP__tze-3eETVEJh4ag84GEHH4GXQXzc/edit>
+
+Répondants : *tous les utilisateurs qui ont le lien* — aucun compte Google
+requis pour répondre. Le lien est déjà branché dans
+`assets/js/form-embed.js`, donc `questionnaire.html` affiche le formulaire
+dans l'habillage HorseCo.
+
+Reste à faire : dans le formulaire, onglet **Réponses** → icône Sheets,
+pour créer le tableau de dépouillement.
+
+---
+
+## 2. Recréer le Google Form (si besoin)
 
 1. Ouvrir <https://script.google.com/home/start> → **Nouveau projet**
 2. Tout sélectionner dans l'éditeur (`Ctrl+A`) et coller
