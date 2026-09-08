@@ -358,26 +358,51 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
 .specs dd { margin: 0; }
 @media (max-width: 520px) { .specs > div { grid-template-columns: minmax(0, 1fr); gap: 0.15rem; } }
 
-/* ---------- 9 bis. L'épure en vue éclatée ---------- */
-.epure3d {
+/* ---------- 9 bis. L'épure posée sur la pièce réelle ---------- */
+.epure-photo {
   margin: 0 auto;
-  max-width: 60rem;
+  max-width: 46rem;
   display: grid;
-  gap: 1.25rem;
+  gap: 1.1rem;
   justify-items: center;
 }
-.epure3d svg { width: 100%; height: auto; }
-.epure3d figcaption {
+.epure-photo .plan {
+  position: relative;
+  width: 100%;
+  border: 1px solid var(--line);
+}
+.epure-photo img { width: 100%; height: auto; }
+
+/* Repère chiffré, coloré par le cuir qu'il désigne */
+.repere {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  width: 2rem;
+  height: 2rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--c);
+  color: var(--t);
+  font-family: var(--sans);
+  font-size: var(--t-sm);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 0 0 2px rgba(250, 246, 240, 0.9), 0 3px 10px rgba(0, 0, 0, 0.35);
+}
+
+.epure-photo figcaption {
   max-width: 34rem;
   text-align: center;
   font-size: var(--t-sm);
   color: var(--ink-2);
 }
+.epure-photo figcaption em { font-style: italic; }
 
 .epure-notes {
   margin: clamp(2.5rem, 5vw, 4rem) 0 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
   gap: clamp(1.5rem, 3vw, 2.5rem);
   border-top: 1px solid var(--line);
   padding-top: clamp(1.5rem, 3vw, 2.25rem);
@@ -385,19 +410,33 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
 .epure-notes dt {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.65rem;
   font-size: var(--t-xs);
   font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 0.6rem;
 }
-.epure-notes dd { margin: 0; font-size: var(--t-sm); color: var(--ink-2); }
-.epure-notes .puce {
-  width: 12px;
-  height: 12px;
+.epure-notes .num {
+  width: 1.5rem;
+  height: 1.5rem;
   flex: none;
-  border: 1px solid rgba(42, 26, 16, 0.25);
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--c);
+  color: var(--t);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+.epure-notes dd { margin: 0; font-size: var(--t-sm); color: var(--ink-2); }
+.epure-notes dd strong {
+  display: block;
+  color: var(--ink);
+  font-weight: 500;
+  margin-bottom: 0.25rem;
 }
 
 /* ---------- 10. Citation pleine largeur ---------- */
