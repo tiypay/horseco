@@ -358,6 +358,48 @@ h1, h2, h3, h4 { margin: 0; font-weight: 400; text-wrap: balance; }
 .specs dd { margin: 0; }
 @media (max-width: 520px) { .specs > div { grid-template-columns: minmax(0, 1fr); gap: 0.15rem; } }
 
+/* ---------- 9 bis. L'épure en vue éclatée ---------- */
+.epure3d {
+  margin: 0 auto;
+  max-width: 60rem;
+  display: grid;
+  gap: 1.25rem;
+  justify-items: center;
+}
+.epure3d svg { width: 100%; height: auto; }
+.epure3d figcaption {
+  max-width: 34rem;
+  text-align: center;
+  font-size: var(--t-sm);
+  color: var(--ink-2);
+}
+
+.epure-notes {
+  margin: clamp(2.5rem, 5vw, 4rem) 0 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+  gap: clamp(1.5rem, 3vw, 2.5rem);
+  border-top: 1px solid var(--line);
+  padding-top: clamp(1.5rem, 3vw, 2.25rem);
+}
+.epure-notes dt {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: var(--t-xs);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+}
+.epure-notes dd { margin: 0; font-size: var(--t-sm); color: var(--ink-2); }
+.epure-notes .puce {
+  width: 12px;
+  height: 12px;
+  flex: none;
+  border: 1px solid rgba(42, 26, 16, 0.25);
+}
+
 /* ---------- 10. Citation pleine largeur ---------- */
 .pull {
   padding-block: clamp(3.5rem, 8vw, 7rem);
