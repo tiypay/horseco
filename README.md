@@ -138,23 +138,74 @@ Cible : **50 personnes** (exigence du guide).
 
 ---
 
-## 5. Mettre en ligne
+## 5. Mettre en ligne — horseco.raw-x.fr
 
-### Sur raw-x.fr
+Le domaine `raw-x.fr` sert déjà **SortMyPC** depuis GitHub Pages
+(compte `tiypay`, DNS géré chez Hostinger). HorseCo va donc sur son
+propre **sous-domaine**, ce qui laisse les deux projets indépendants et
+met la marque en tête d'adresse :
 
-Copier le contenu de ce dossier dans `raw-x.fr/horseco/` par FTP ou par
-le gestionnaire de fichiers de l'hébergeur. Le site sera à
-`https://raw-x.fr/horseco/`.
+```
+https://horseco.raw-x.fr
+```
 
-### Sur GitHub Pages
+Le fichier `CNAME` à la racine contient déjà ce nom, et `.nojekyll`
+évite que GitHub Pages ignore des fichiers.
+
+### a. Pousser le dépôt
 
 ```bash
-git remote add origin https://github.com/<compte>/horseco.git
+git remote add origin https://github.com/tiypay/horseco.git
 git push -u origin main
 ```
 
-Puis *Settings → Pages → Source: main, dossier `/ (root)`*.
-Le site sort sur `https://<compte>.github.io/horseco/`.
+### b. Activer Pages
+
+Dépôt → **Settings** → **Pages** :
+- Source : `Deploy from a branch`, branche `main`, dossier `/ (root)`
+- Custom domain : `horseco.raw-x.fr`
+
+### c. Créer l'enregistrement DNS chez Hostinger
+
+Panneau Hostinger → **Domaines** → `raw-x.fr` → **Éditeur DNS** →
+ajouter :
+
+| Type | Nom | Pointe vers | TTL |
+|---|---|---|---|
+| CNAME | `horseco` | `tiypay.github.io` | par défaut |
+
+**Ne touchez à rien d'autre** : les enregistrements existants font
+tourner SortMyPC.
+
+### d. Attendre, puis forcer le HTTPS
+
+Comptez 5 à 30 minutes de propagation. Quand GitHub affiche
+« DNS check successful », cochez **Enforce HTTPS** : le certificat est
+délivré automatiquement, gratuitement.
+
+Pour vérifier depuis le PC :
+
+```bash
+nslookup horseco.raw-x.fr
+```
+
+### Après chaque mise à jour
+
+Incrémenter les `?v=` sur les liens CSS et JS dans les trois pages HTML,
+sinon les visiteurs déjà venus garderont l'ancienne version en cache.
+
+### Solution de repli sans DNS
+
+Si le sous-domaine coince le jour J, on peut se rabattre sur
+`https://tiypay.github.io/horseco/` — mais **il faut d'abord retirer le
+nom de domaine personnalisé**, sinon GitHub Pages redirige cette adresse
+vers `horseco.raw-x.fr` qui ne répond pas encore :
+
+1. Supprimer le fichier `CNAME` à la racine du dépôt, et pousser
+2. Dépôt → Settings → Pages → vider le champ **Custom domain**
+
+Le site repasse alors sur l'adresse `github.io`. Les liens internes sont
+tous relatifs, donc rien d'autre à changer.
 
 ---
 
