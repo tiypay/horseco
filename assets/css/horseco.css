@@ -820,3 +820,80 @@ body.survey { background: var(--sand); }
 .embed-foot { font-size: var(--t-sm); color: var(--ink-2); text-align: center; }
 .embed-foot a { border-bottom: 1px solid var(--line); }
 .embed-foot a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* ---------- 15. Consentement cookies ---------- */
+.cookies {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(20, 12, 6, 0.42);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.cookies[hidden] { display: none !important; }
+
+/* Petite carte translucide, au centre de l'écran */
+.cookies-carte {
+  width: min(23rem, 100%);
+  display: grid;
+  gap: 0.85rem;
+  padding: 1.5rem 1.5rem 1.35rem;
+  background: rgba(250, 246, 240, 0.90);
+  backdrop-filter: blur(14px) saturate(125%);
+  -webkit-backdrop-filter: blur(14px) saturate(125%);
+  border: 1px solid var(--line);
+  box-shadow: 0 20px 55px rgba(20, 12, 6, 0.38);
+}
+.cookies-carte .caps { color: var(--accent); }
+.cookies-carte p { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.5; }
+
+/* Refuser et accepter au même niveau : même taille, même place. */
+.cookies-choix { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; margin-top: 0.15rem; }
+.cookies-choix .btn { padding: 0.9em 0.5em; text-align: center; }
+
+.cookies-plus {
+  font-size: var(--t-xs);
+  letter-spacing: 0.06em;
+  color: var(--ink-2);
+  border-bottom: 1px solid var(--line);
+  justify-self: start;
+}
+.cookies-plus:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+/* Repli quand le formulaire est refusé */
+.embed-repli { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.4rem 0 0.9rem; }
+
+/* Bouton qui rouvre le choix, dans le pied de page */
+.foot [data-cookies-rouvrir] {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  text-align: left;
+}
+.foot [data-cookies-rouvrir]:hover { color: var(--cream); }
+
+/* ---------- 16. Page confidentialité ---------- */
+.legal { max-width: 42rem; margin-inline: auto; display: grid; gap: 1.5rem; }
+.legal h1 { font-family: var(--display); font-size: var(--t-2xl); }
+.legal h2 {
+  font-family: var(--sans);
+  font-size: var(--t-xs);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 1rem;
+}
+.legal p, .legal li { color: var(--ink-2); font-size: var(--t-base); }
+.legal ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.5rem; }
+.legal strong { color: var(--ink); font-weight: 500; }
+.legal table { width: 100%; border-collapse: collapse; font-size: var(--t-sm); }
+.legal th, .legal td { text-align: left; padding: 0.7rem 0.6rem; border-bottom: 1px solid var(--line); vertical-align: top; }
+.legal th { font-size: var(--t-xs); letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); font-weight: 500; }
+.legal td { color: var(--ink-2); }
