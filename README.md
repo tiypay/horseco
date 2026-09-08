@@ -23,11 +23,14 @@ Double-cliquer sur `index.html` suffit pour le voir.
 
 ---
 
-## 1. Ajouter les photos
+## 1. Les photos
 
-C'est **la seule chose qui manque** pour que le site ait l'allure d'une
-vraie maison. Déposer les fichiers dans `assets/img/` avec ces noms
-exacts, puis recharger la page :
+Les huit visuels sont **déjà en place** dans `assets/img/` — générés avec
+Gemini, puis redimensionnés et compressés (16,8 Mo → 1,0 Mo au total).
+
+Pour en remplacer un : déposer un fichier au même nom, même cadrage,
+et recharger. Rien d'autre à modifier. Si un fichier manque, le site
+affiche une épure au trait à sa place plutôt que de casser.
 
 | Fichier | Ce qu'on y voit | Cadrage |
 |---|---|---|
