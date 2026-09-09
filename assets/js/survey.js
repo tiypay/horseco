@@ -104,19 +104,13 @@
     },
     {
       id: "q2", type: "single",
-      fr: "Votre tranche d'âge", en: "Your age group",
-      of: ["Moins de 18 ans", "18 – 25 ans", "26 – 40 ans", "41 – 60 ans", "Plus de 60 ans"],
-      oe: ["Under 18", "18 – 25", "26 – 40", "41 – 60", "Over 60"]
-    },
-    {
-      id: "q3", type: "single",
       fr: "Quel budget consacrez-vous par an à l'équipement équestre ?",
       en: "How much do you spend on riding equipment per year?",
       of: ["Aucun", "Moins de 200 €", "200 – 500 €", "500 – 1 500 €", "1 500 – 3 000 €", "Plus de 3 000 €"],
       oe: ["None", "Under €200", "€200 – 500", "€500 – 1,500", "€1,500 – 3,000", "Over €3,000"]
     },
     {
-      id: "q4", type: "multi",
+      id: "q3", type: "multi",
       fr: "Si vous achetez du matériel équestre, qu'est-ce qui compte le plus ?",
       en: "If you buy riding gear, what matters most to you?",
       of: ["Sécurité et solidité", "Confort du cheval", "Prix", "Esthétique et design",
@@ -125,12 +119,12 @@
            "Brand reputation", "Where the materials come from", "Environmental impact"]
     },
     {
-      id: "q5", type: "scale",
+      id: "q4", type: "scale",
       fr: "Un équipement équestre haut de gamme fait de cuir automobile récupéré, avec du cuir artisanal italien sur les zones de sécurité : qu'en pensez-vous ?",
       en: "High-end riding equipment made from reclaimed car leather, with artisan Italian leather on the safety-critical parts: how appealing is that?"
     },
     {
-      id: "q6", type: "multi",
+      id: "q5", type: "multi",
       fr: "Qu'est-ce qui vous freinerait le plus ?", en: "What would hold you back the most?",
       of: ["Un doute sur la solidité", "L'hygiène ou l'odeur", "Un prix trop élevé",
            "L'esthétique", "L'idée d'un matériau de seconde main", "Rien, aucun frein"],
@@ -138,32 +132,38 @@
            "The look", "The idea of second-hand material", "Nothing, no reservations"]
     },
     {
-      id: "q7", type: "single",
+      id: "q6", type: "single",
       fr: "Combien paieriez-vous une paire de bottes d'équitation HorseCo ?",
       en: "What would you pay for a pair of HorseCo riding boots?",
       of: ["Moins de 150 €", "150 – 300 €", "300 – 500 €", "500 – 800 €", "Plus de 800 €"],
       oe: ["Under €150", "€150 – 300", "€300 – 500", "€500 – 800", "Over €800"]
     },
     {
-      id: "q8", type: "single",
+      id: "q7", type: "single",
       fr: "Seriez-vous prêt·e à payer plus cher pour un produit recyclé fabriqué en France ?",
       en: "Would you pay more for a recycled product made in France?",
       of: ["Oui, jusqu'à 20 % de plus", "Oui, jusqu'à 10 % de plus", "Seulement au même prix", "Non, je le veux moins cher"],
       oe: ["Yes, up to 20% more", "Yes, up to 10% more", "Only at the same price", "No, I want it cheaper"]
     },
     {
-      id: "q9", type: "single",
+      id: "q8", type: "single",
       fr: "Quelle pièce vous intéresserait le plus ?", en: "Which piece would interest you most?",
       of: ["La selle", "Les bottes", "La cravache", "La besace et la petite maroquinerie", "Les accessoires du cheval (licol, tapis)"],
       oe: ["The saddle", "The boots", "The riding crop", "The bag and small leather goods", "Horse accessories (halter, saddle pad)"]
     },
     {
-      id: "q10", type: "single",
+      id: "q9", type: "single",
       fr: "Où aimeriez-vous trouver ce type de produit ?", en: "Where would you like to find this kind of product?",
       of: ["Sur le site de la marque", "En sellerie spécialisée", "Sur un concours ou un salon équestre",
            "Dans un pop-up store", "Sur une marketplace en ligne"],
       oe: ["On the brand's website", "In a specialist tack shop", "At a horse show or trade fair",
            "In a pop-up store", "On an online marketplace"]
+    },
+    {
+      id: "q10", type: "single",
+      fr: "Votre tranche d'âge", en: "Your age group",
+      of: ["Moins de 18 ans", "18 – 25 ans", "26 – 40 ans", "41 – 60 ans", "Plus de 60 ans"],
+      oe: ["Under 18", "18 – 25", "26 – 40", "41 – 60", "Over 60"]
     },
     {
       id: "email", type: "text", optional: true,

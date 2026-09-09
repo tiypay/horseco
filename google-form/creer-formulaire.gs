@@ -66,17 +66,8 @@ function creerFormulaireHorseCo() {
     'Non-cavalier·ère — Not a rider'
   ], true);
 
-  /* ---------- 2 ---------- */
-  qcm(form, '2. Votre tranche d\'âge / Your age group', [
-    'Moins de 18 ans — Under 18',
-    '18 – 25 ans — 18 to 25',
-    '26 – 40 ans — 26 to 40',
-    '41 – 60 ans — 41 to 60',
-    'Plus de 60 ans — Over 60'
-  ], true);
-
   /* ---------- 3 ---------- */
-  qcm(form, '3. Quel budget consacrez-vous par an à l\'équipement équestre ? / How much do you spend on riding equipment per year?', [
+  qcm(form, '2. Quel budget consacrez-vous par an à l\'équipement équestre ? / How much do you spend on riding equipment per year?', [
     'Aucun — None',
     'Moins de 200 € — Under €200',
     '200 – 500 € — €200 to 500',
@@ -86,7 +77,7 @@ function creerFormulaireHorseCo() {
   ], true);
 
   /* ---------- 4 ---------- */
-  cases(form, '4. Si vous achetez du matériel équestre, qu\'est-ce qui compte le plus ? / If you buy riding gear, what matters most?', [
+  cases(form, '3. Si vous achetez du matériel équestre, qu\'est-ce qui compte le plus ? / If you buy riding gear, what matters most?', [
     'Sécurité et solidité — Safety and durability',
     'Confort du cheval — Comfort for the horse',
     'Prix — Price',
@@ -109,13 +100,13 @@ function creerFormulaireHorseCo() {
 
   /* ---------- 5 : échelle 1–5 ---------- */
   form.addScaleItem()
-      .setTitle('5. Un équipement équestre haut de gamme en cuir automobile récupéré, avec du cuir italien sur les zones de sécurité : qu\'en pensez-vous ? / How appealing is that idea to you?')
+      .setTitle('4. Un équipement équestre haut de gamme en cuir automobile récupéré, avec du cuir italien sur les zones de sécurité : qu\'en pensez-vous ? / How appealing is that idea to you?')
       .setBounds(1, 5)
       .setLabels('Pas du tout séduisant — Not appealing', 'Très séduisant — Very appealing')
       .setRequired(true);
 
   /* ---------- 6 ---------- */
-  cases(form, '6. Qu\'est-ce qui vous freinerait le plus ? / What would hold you back the most?', [
+  cases(form, '5. Qu\'est-ce qui vous freinerait le plus ? / What would hold you back the most?', [
     'Un doute sur la solidité — Doubts about durability',
     'L\'hygiène ou l\'odeur — Hygiene or smell',
     'Un prix trop élevé — Too expensive',
@@ -128,7 +119,7 @@ function creerFormulaireHorseCo() {
       .setTitle('Prix, gamme et achat / Price, range and purchase');
 
   /* ---------- 7 ---------- */
-  qcm(form, '7. Combien paieriez-vous une paire de bottes d\'équitation HorseCo ? / What would you pay for a pair of HorseCo riding boots?', [
+  qcm(form, '6. Combien paieriez-vous une paire de bottes d\'équitation HorseCo ? / What would you pay for a pair of HorseCo riding boots?', [
     'Moins de 150 € — Under €150',
     '150 – 300 € — €150 to 300',
     '300 – 500 € — €300 to 500',
@@ -137,7 +128,7 @@ function creerFormulaireHorseCo() {
   ], true);
 
   /* ---------- 8 ---------- */
-  qcm(form, '8. Seriez-vous prêt·e à payer plus cher pour un produit recyclé fabriqué en France ? / Would you pay more for a recycled product made in France?', [
+  qcm(form, '7. Seriez-vous prêt·e à payer plus cher pour un produit recyclé fabriqué en France ? / Would you pay more for a recycled product made in France?', [
     'Oui, jusqu\'à 20 % de plus — Yes, up to 20% more',
     'Oui, jusqu\'à 10 % de plus — Yes, up to 10% more',
     'Seulement au même prix — Only at the same price',
@@ -145,7 +136,7 @@ function creerFormulaireHorseCo() {
   ], true);
 
   /* ---------- 9 ---------- */
-  qcm(form, '9. Quelle pièce vous intéresserait le plus ? / Which piece would interest you most?', [
+  qcm(form, '8. Quelle pièce vous intéresserait le plus ? / Which piece would interest you most?', [
     'La selle — The saddle',
     'Les bottes — The boots',
     'La cravache — The riding crop',
@@ -154,7 +145,7 @@ function creerFormulaireHorseCo() {
   ], true);
 
   /* ---------- 10 ---------- */
-  qcm(form, '10. Où aimeriez-vous trouver ce type de produit ? / Where would you like to find this kind of product?', [
+  qcm(form, '9. Où aimeriez-vous trouver ce type de produit ? / Where would you like to find this kind of product?', [
     'Sur le site de la marque — On the brand\'s website',
     'En sellerie spécialisée — In a specialist tack shop',
     'Sur un concours ou un salon équestre — At a horse show or trade fair',
@@ -164,7 +155,17 @@ function creerFormulaireHorseCo() {
 
   /* ---------- Collecte d'e-mail ---------- */
   form.addPageBreakItem()
-      .setTitle('Rester informé·e / Stay in touch');
+      .setTitle('Pour finir / To finish');
+
+  /* ---------- 10 : demographie, volontairement en dernier ---------- */
+  qcm(form, '10. Votre tranche d\'âge / Your age group', [
+    'Moins de 18 ans — Under 18',
+    '18 – 25 ans — 18 to 25',
+    '26 – 40 ans — 26 to 40',
+    '41 – 60 ans — 41 to 60',
+    'Plus de 60 ans — Over 60'
+  ], true);
+
 
   form.addTextItem()
       .setTitle('Votre e-mail, pour être averti·e de nos annonces')
