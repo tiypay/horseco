@@ -62,6 +62,7 @@ affiche une épure au trait à sa place plutôt que de casser.
 | `filet.jpg` | Le filet Volterra | portrait 4:5 |
 | `cravache.jpg` | La cravache Fucecchio | portrait 4:5 |
 | `besace.jpg` | La besace Siena | portrait 4:5 |
+| `teintes/*.jpg` | Chaque pièce en havane, bordeaux et noir (la photo d’origine est la teinte cognac) | portrait 4:5 |
 | `matiere-toscane.jpg` | Gros plan de cuir fauve, grain visible | paysage 4:3 |
 | `matiere-vhu.jpg` | Siège de voiture en cuir, ou casse auto | paysage 4:3 |
 | `atelier.jpg` | Établi, outils de sellier, mains au travail | paysage large |
