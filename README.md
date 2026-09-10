@@ -59,7 +59,7 @@ affiche une épure au trait à sa place plutôt que de casser.
 |---|---|---|
 | `hero.jpg` | Cavalier, cheval, ou détail de selle en mouvement | paysage large |
 | `selle.jpg` | La selle Maremma | portrait 4:5 |
-| `bottes.jpg` | Les bottes Volterra | portrait 4:5 |
+| `filet.jpg` | Le filet Volterra | portrait 4:5 |
 | `cravache.jpg` | La cravache Fucecchio | portrait 4:5 |
 | `besace.jpg` | La besace Siena | portrait 4:5 |
 | `matiere-toscane.jpg` | Gros plan de cuir fauve, grain visible | paysage 4:3 |
